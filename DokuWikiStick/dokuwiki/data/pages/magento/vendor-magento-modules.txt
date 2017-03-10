@@ -1,0 +1,841 @@
+====== Modules: ======
+
+Magento Vendor Modules:
+
+=== module-admin-notification ===
+
+<code># Admin Notification
+
+**Admin Notification** provides the ability to alert administrators via
+system messages and provides a message inbox for surveys and notifications.
+</code>
+
+=== module-advanced-pricing-import-export ===
+
+<code>The Magento_AdvancedPricingImportExport module handles the import and export of the advanced pricing.</code>
+
+=== module-authorization ===
+
+<code># Authorization
+
+**Authorization** enables management of access control list roles and
+rules in the application.
+</code>
+
+=== module-authorizenet ===
+
+<code>The Magento_Authorizenet module implements the integration with the Authorize.Net payment gateway and makes the latter available as a payment method in Magento.
+</code>
+
+=== module-backend ===
+
+<code>The Backend module contains common infrastructure and assets for other modules to be defined and used in their
+administration user interface (UI). It does not contain anything specific to other modules. Among many things it
+handles the logic of authenticating and authorizing users.
+</code>
+
+=== module-backup ===
+
+<code>The Backup module allows administrators to perform backups and rollbacks. Types of backups include system, database and media backups. This module relies on the Cron module to schedule backups.
+
+This module does not affect the storefront.
+</code>
+
+=== module-braintree ===
+
+<code>Module Magento\Braintree implements integration with the Braintree payment system.</code>
+
+=== module-bundle ===
+
+<code>Magento_Bundle module introduces new product type in the Magento application named Bundle Product.
+This module is designed to extend existing functionality of Magento_Catalog module by adding new product type.
+</code>
+
+=== module-bundle-import-export ===
+
+<code>Magento_BundleImportExport module implements Bundle products import/export functionality.
+This module is designed to extend existing functionality of Magento_CatalogImportExport module by adding new product type.
+</code>
+
+=== module-cache-invalidate ===
+
+<code>The CacheInvalidate module is used to invalidate the Varnish cache if it is configured.
+It listens for events that request the cache to be flushed or cause the cache to be invalid, then sends Varnish a purge request using cURL.</code>
+
+=== module-captcha ===
+
+<code>The Captcha module allows applying Turing test in the process of user authentication or similar tasks.</code>
+
+=== module-catalog ===
+
+<code>Magento_Catalog module functionality is represented by the following sub-systems:
+ - Products Management. It includes CRUD operation of product, product media, product attributes, etc...
+ - Category Management. It includes CRUD operation of category, category attributes
+
+Catalog module provides mechanism for creating new product type in the system.
+Catalog module provides API filtering that allows to limit product selection with advanced filters.
+</code>
+
+=== module-catalog-inventory ===
+
+<code>Magento_CatalogInventory module allows retrieve and update stock attributes, such as status and quantity.
+</code>
+
+=== module-catalog-rule ===
+
+<code>Magento_CatalogRule module is responsible for one of the types of price rules in Magento. Catalog Rules are applied to products before they are added to the cart.
+</code>
+
+=== module-catalog-rule-configurable ===
+
+<code>Magento_CatalogRuleConfigurable module is an extension of Magento_CatalogRule and Magento_ConfigurableProduct modules that handle catalog rule indexer for configurable product
+</code>
+
+=== module-catalog-search ===
+
+<code>Magento_CatalogSearch module is an extension of Magento_Catalog module that allows to use search engine for product searching capabilities.
+The module implements Magento_Search library interfaces.
+</code>
+
+=== module-catalog-widget ===
+
+<code># CatalogWidget
+
+**CatalogWidget** contains various widgets that extend Catalog module functionality:
+- Product List widget provides widget that contains product list created using rule based filter.
+</code>
+
+=== module-checkout ===
+
+<code>Magento\Checkout module allows merchant to register sale transaction with the customer. Module implements consumer flow
+that includes such actions like adding products to cart, providing shipping and billing information and confirming
+the purchase.</code>
+
+=== module-checkout-agreements ===
+
+<code>Magento\CheckoutAgreements module provides the ability add web store agreement that customers must accept before purchasing
+products from store. The customer will need to accept the terms and conditions in the Order Review section of the
+checkout process to be able to place an order if Terms and Conditions functionality is enabled.</code>
+
+=== module-cms ===
+
+<code>The CMS module allows creating, editing and managing pages with different content type.</code>
+
+=== module-config ===
+
+<code>#Config
+The Config module is designed to implement system configuration functionality.
+It provides mechanisms to add, edit, store and retrieve the configuration data
+for each scope (there can be a default scope as well as scopes for each website and store).
+
+Modules can add items to be configured on the system configuration page by creating 
+system.xml files in their etc/adminhtml directories. These system.xml files get merged 
+to populate the forms in the config page.
+</code>
+
+=== module-configurable-product ===
+
+<code>Magento_ConfigurableProduct module introduces new product type in the Magento application called Configurable Product.
+This module is designed to extend existing functionality of Magento_Catalog module by adding new product type.
+
+Configurable Products let the customers select the variant they desire by choosing options.
+For example, store owner sells t-shirts in two colors and three sizes.
+</code>
+
+=== module-contact ===
+
+<code>Magento_Contact module provides an implementation of "Contact Us" feature based on sending email message, allows to configure email recipients, email template, etc...
+</code>
+
+=== module-cookie ===
+
+<code>Magento_Cookie module allows enabling and configuring HTTP cookie related settings for the store. These settings are available in the store administration.
+</code>
+
+=== module-cron ===
+
+<code>Cron is a module that enables scheduling of jobs. Other modules can add cron jobs by including crontab.xml in their etc directory. The command "bin/magento cron:run" should be run periodically to trigger the Cron module to run its scheduled jobs.
+This module also allows administrators to tune cron options in Magento Admin.</code>
+
+=== module-currency-symbol ===
+
+<code># CurrencySymbol
+
+**CurrencySymbol** enables the creation of custom currencies and management of currency conversion rates.
+
+## Controllers
+
+### Currency Controllers
+***CurrencySymbol\Controller\Adminhtml\System\Currency\FetchRates.php*** gets a specified currency conversion rate.
+Supports all defined currencies in the system.
+***CurrencySymbol\Controller\Adminhtml\System\Currency\SaveRates.php*** saves rates for defined currencies.
+
+### Currency Symbol Controllers
+***CurrencySymbol\Controller\Adminhtml\System\Currencysymbol\Reset.php*** resets all custom currency symbols.
+***CurrencySymbol\Controller\Adminhtml\System\Currencysymbol\Save.php*** creates custom currency symbols.
+
+</code>
+
+=== module-customer ===
+
+<code>The Magento_Customer module serves to handle the customer data (Customer, Customer Address and Customer Group entities) both in the admin panel and the storefront. 
+For customer passwords, the module implements upgrading hashes. 
+</code>
+
+=== module-customer-import-export ===
+
+<code>The Magento_CustomerImportExport module handles the import and export of the customers data and related addresses.
+</code>
+
+=== module-deploy ===
+
+<code>Deploy is a module that holds collection of command line tools to help with Magento application deployment. To execute this command, please, run "bin/magento setup:static-content:deploy" from the Magento root directory.
+Deploy module contains 2 additional commands that allows switching between application modes (for instance from 
+development to
+production) and show current application mode. To change the mode run "bin/magento setup:mode:set [mode]".
+Where mode can be one of the following:
+ - development
+ - production
+When switching to production mode, you can pass optional parameter skip-compilation to do not compile static files, CSS 
+and do not run the compilation process.
+</code>
+
+=== module-developer ===
+
+<code>The Magento_Developer module provides functionality to make it easier to develop in Magento 2.
+</code>
+
+=== module-dhl ===
+
+<code>The Magento_Dhl module implements the integration with the DHL shipping carrier.
+DHL is available for international shipments only.
+</code>
+
+=== module-directory ===
+
+<code># Directory
+
+**Directory** enables the management of countries and regions recognized by the store and associated data
+like the country code and currency rates. Also, enables conversion of prices to a specified currency format.
+</code>
+
+=== module-downloadable ===
+
+<code>Magento_Downloadable module introduces new product type in the Magento application called Downloadable Product.
+This module is designed to extend existing functionality of Magento_Catalog module by adding new product type.
+</code>
+
+=== module-downloadable-import-export ===
+
+<code>The Magento_DownloadableImportExport module handles the import and export of the downloadable products.
+</code>
+
+=== module-eav ===
+
+<code>Magento\EAV stands for Entity-Attribute-Value. The purpose of Magento\Eav module is to make entities
+configurable/extendable by admin user.</code>
+
+=== module-email ===
+
+<code># Email
+
+**Email** enables you to manage email templates, which are used when you send email through the
+*\Magento\Framework\Mail\TransportInterface* implementations.
+</code>
+
+=== module-encryption-key ===
+
+<code>The Magento_EncryptionKey module provides an advanced encryption model to protect passwords and other sensitive data.
+</code>
+
+=== module-fedex ===
+
+<code>The Magento_Fedex implements the integration with the FedEx shipping carrier.
+</code>
+
+=== module-gift-message ===
+
+<code>Magento\GiftMessage module allows to add a message to order or to each ordered item either on frontend or backend.</code>
+
+=== module-google-adwords ===
+
+<code>GoogleAdwords is a module designed for integration of Google Adwords service.
+</code>
+
+=== module-google-analytics ===
+
+<code>Magento_GoogleAnalytics is a module for integration with Google Analytics service.
+</code>
+
+=== module-google-optimizer ===
+
+<code>Magento_GoogleOptimizer module implements functionality of Google Experiment tool that is the part of Google Analytics functionality.
+
+Google Experiment (on Google side) allows to make two variants of the same page and compare their popularity. 
+From Magento side, code generated by Google should be saved and displayed on a particular page.
+Google Experiment functionality is available on pages of products, categories and cms pages. 
+This allows to save different codes for products and categories on different store views.
+This functionality can be switched on and off on the configuration page (Stores -> Configuration -> General -> Google Api -> Google Analytics).
+Also this functionality depends on Google Analytics module and configuration options.
+</code>
+
+=== module-grouped-product ===
+
+<code>Magento_GroupedProduct module provides ability to offer several standalone products for sale as a group on the same Product Detail page.
+It can offer variations of a product, or group them by season or theme to create a coordinated set.
+Products can be purchased separately or as a set.
+Each product purchased appears in the Shopping Cart as a separate item.
+This module extends the existing functionality of Magento_Catalog module by adding new product type.
+</code>
+
+=== module-import-export ===
+
+<code>Magento_ImportExport module provides a framework and basic functionality for importing/exporting various entities in Magento.
+It can be disabled and in such case all dependent import/export functionality (products, customers, orders etc.) will be disabled in Magento.
+</code>
+
+=== module-indexer ===
+
+<code>## Overview
+Magento_Indexer module is a base of Magento Indexing functionality.
+It allows:
+ - read indexers configuration,
+ - represent indexers in admin,
+ - regenerate indexes by cron schedule,
+ - regenerate indexes from console,
+ - view and reset indexer state from console,
+ - view and set indexer mode from console
+
+There are 2 modes of the Indexers: "Update on save" and "Update by schedule".
+Manual full reindex can be performed via console by running `php -f bin/magento indexer:reindex` console command.</code>
+
+=== module-integration ===
+
+<code># Integration
+
+**Integration** enables third-party services to call the Web API by using access tokens.
+It provides an admin UI that enables manual creation of integrations. Extensions can also provide a configuration
+file so that an integration can be automatically pre-configured. The module also contains the data
+model for request and access token management.
+</code>
+
+=== module-layered-navigation ===
+
+<code>Magento_LayeredNavigation module introduces Layered Navigation UI for Catalog (faceted search).
+This module can be removed from Magento installation without impact on the application.
+</code>
+
+=== module-marketplace ===
+
+<code>The Magento_Marketplace module allows to display partners of Magento in the backend.</code>
+
+=== module-media-storage ===
+
+<code>The Magento_MediaStorage module implements functionality related with upload media files and synchronize it by database.
+</code>
+
+=== module-multishipping ===
+
+<code>Magento\Multishipping module provides functionality that allows customer to request shipping to more than one address
+using different carriers. The module provides alternative to standard checkout flow.</code>
+
+=== module-new-relic-reporting ===
+
+<code>Module Magento\NewRelicReporting implements integration New Relic APM and New Relic Insights with Magento, giving 
+real-time visibility into business and performance metrics for data-driven decision making. </code>
+
+=== module-newsletter ===
+
+<code>Magento_Newsletter module allows clients to subscribe for information about new promotions and discounts and allows store administrators to send newsletters to clients subscribed for them.
+</code>
+
+=== module-offline-payments ===
+
+<code>The Magento_OfflinePayments module implements the payment methods which do not require interaction with a payment gateway (so called offline methods). These methods are the following:
+*Bank transfer
+*Cash on delivery
+*Check / Money Order
+*Purchase order
+</code>
+
+=== module-offline-shipping ===
+
+<code>The Magento_OfflineShipping module implements the shipping methods which do not involve a direct interaction with shipping carriers, so called offline shipping methods. Namely, the following:
+*Free Shipping
+*Flat Rate
+*Table Rates
+*Store Pickup
+
+</code>
+
+=== module-page-cache ===
+
+<code>The PageCache module provides functionality of caching full pages content in Magento application. An administrator may switch between built-in caching and Varnish caching. Built-in caching is default and ready to use without the need of any external tools.
+Requests and responses are managed by PageCache plugin. It loads data from cache and returns a response. If data is not present in cache, it passes the request to Magento and waits for the response. Response is then saved in cache.
+Blocks can be set as private blocks by setting the property '_isScopePrivate' to true. These blocks contain personalized information and are not cached in the server. These blocks are being rendered using AJAX call after the page is loaded. Contents are cached in browser instead.
+Blocks can also be set as non-cacheable by setting the 'cacheable' attribute in layout XML files. For example `<block class="Block\Class" name="blockname" cacheable="false" />`. Pages containing such blocks are not cached.</code>
+
+=== module-payment ===
+
+<code>The Magento_Payment module provides the abstraction level for all payment methods, and all logic that should be used when adding a new payment method. This logic includes configuration models, separate models for payment data verification and so on.
+For example, Magento\Payment\Model\Method\AbstractMethod is an abstract model which should be extended by particular payment methods.
+</code>
+
+=== module-paypal ===
+
+<code>Module Magento\PayPal implements integration with the PayPal payment system. Namely, it enables the following payment methods:
+*PayPal Express Checkout
+*PayPal Payments Standard
+*PayPal Payments Pro
+*PayPal Credit
+*PayFlow Payment Gateway
+</code>
+
+=== module-persistent ===
+
+<code>Magento\Persistent module enables set customer a long-term cookie containing internal id (random hash - to exclude brute
+force) of persistent session. Persistent session data is kept in DB - so it's not deleted in some days and is kept for
+as much time as we need. DB session keeps customerId + some data from real customer session that we want to sync (e.g.
+num items in shopping cart). For registered customer this info is synced to persistent session if choose "Remember me"
+checkbox during first login.
+</code>
+
+=== module-product-alert ===
+
+<code>The Magento_ProductAlert module enables product alerts, which allow customers to sign up for emails about product price or stock status change.
+</code>
+
+=== module-product-video ===
+
+<code>The Magento_ProductVideo module implements functionality related with linking video files from external resources to product.
+</code>
+
+=== module-quote ===
+
+<code># Overview
+## Purpose of module
+
+
+# Deployment
+## System requirements
+
+The Magento_Quote module does not have any specific system requirements.
+
+## Install
+The Magento_Quote module is installed automatically (using the native Magento install mechanism) without any additional actions.
+</code>
+
+=== module-reports ===
+
+<code>Magento_Reports module provides ability to collect various reports such as:
+ - products reports (bestsellers, low stock, most viewed, products ordered),
+ - sales reports (orders, tax, invoiced, shipping, refunds, coupons, and PayPal settlement reports),
+ - customer reports (new accounts, customer by order totals, customers by number of orders),
+ - shopping cart reports (products in cart, abandoned carts)
+</code>
+
+=== module-require-js ===
+
+<code># Overview
+## Purpose of module
+
+The Magento\RequireJs module introduces support for RequireJs JavaScript library and provides infrastructure for other modules to have them declared related configuration for RequireJs library.
+
+# Deployment
+## System requirements
+
+The Magento\RequireJs module does not have any specific system requirements.
+
+## Install
+The Magento\RequireJs module is installed automatically (using the native Magento Setup). No additional actions required.
+</code>
+
+=== module-review ===
+
+<code>Magento_Review module functionality allows to write reviews for products.
+</code>
+
+=== module-rss ===
+
+<code>Magento_Rss module is responsible for processing all RSS feeds of the application and allows to turn on/off RSS centrally.
+</code>
+
+=== module-rule ===
+
+<code>Magento_Rule module provides abstract implementation of rules and rule conditions that are extended by other modules, in particular by: Magento_SalesRule, Magento_CatalogRule, etc...
+</code>
+
+=== module-sales ===
+
+<code># Overview
+## Purpose of module
+
+Magento\Sales module is responsible for order processing and appearance in system,
+Magento\Sales module manages next system entities and flows:
+* order management;
+* invoice management;
+* shipment management (including tracks management);
+* credit memos management;
+Magento\Sales module is required for Magento\Checkout module to perform checkout operations.
+
+# Deployment
+## System requirements
+
+The Magento_Sales module does not have any specific system requirements.
+Depending on how many orders are being placed, there might be consideration for the database size
+
+## Install
+The Magento_Sales module is installed automatically (using the native Magento install mechanism) without any additional actions.
+</code>
+
+=== module-sales-inventory ===
+
+<code>Magento_SalesInventory module allows retrieve and update stock attributes related to Magento_Sales, such as status and quantity.
+</code>
+
+=== module-sales-rule ===
+
+<code>SalesRule module is responsible for managing and processing Promotion Shopping Cart Rules.
+
+</code>
+
+=== module-sales-sequence ===
+
+<code># Overview
+## Purpose of module
+
+Magento\SalesSequence module is responsible for sequences processing in Sales module,
+Magento\SalesSequence module manages sequences for next system entities and flows:
+* order;
+* invoice;
+* shipment;
+* credit memos;
+Magento\SalesSequence module is required for Magento\Sales module.
+
+# Deployment
+## System requirements
+
+The Magento_SalesSequence module does not have any specific system requirements.
+
+## Install
+The Magento_SalesSequence module is installed automatically (using the native Magento install mechanism) without any additional actions.
+</code>
+
+=== module-sample-data ===
+
+<code>Magento sample data includes a sample store, complete with more than 250 products (about 200 of them are configurable products), categories, promotional price rules, CMS pages, banners, and so on. Sample data uses the Luma theme on the storefront.
+
+Installing sample data is optional.
+
+Technically, sample data is a set of regular Magento modules, which can be deployed and installed together with the Magento instance, or later in the scope of upgrade.
+
+## Deploy Sample Data
+You can deploy sample data from one of the following sources:
+
+* From the Magento composer repository, optionally using Magento CLI
+* From the Magento GitHub repository
+
+If your Magento code base was cloned from the `master` branch, you can use either source of the sample data. If it was cloned from the `develop` branch, use the GitHub repository and choose to get sample data modules from the `develop` branch.
+
+### Deploy Sample Data from Composer Repository
+
+To deploy sample data from the Magento composer repository using Magento CLI:
+
+1. If your Magento instance is already installed, skip this step. Otherwise, in the Magento root directory, run: `# composer install`.
+2. In the Magento root directory, run: `# bin/magento sampledata:deploy`. This command collects the dependencies from the `suggest` sections of the `composer.json` files of modules, which suggest to install sample data (like `Magento_Catalog`, `Magento_Sales`, and so on).
+
+To deploy sample data from the Magento composer repository without Magento CLI:
+
+1. Specify sample data packages in the `require` section of the root `composer.json` file, for example:
+```
+{
+    "require": {
+        ...
+        "magento/module-catalog-sample-data": "{version}",
+        "magento/module-configurable-sample-data": "{version}",
+        "magento/module-cms-sample-data": "{version}",
+        "magento/module-sales-sample-data": "{version}"
+        ....
+    }
+}
+```
+
+Where `<version>` is the version of the packages; it should correspond to the version of the Magento instance.
+
+Each package corresponds to a sample data module. The complete list of available modules can be viewed in the [sample data GitHub repository] (https://github.com/magento/magento2-sample-data/tree/develop/app/code/Magento)
+
+2. To update the dependencies, in the Magento root directory, run: `# composer update`
+
+### Deploy Sample Data from GitHub Repository
+
+To deploy sample data from the GitHub repository:
+
+1. Clone sample data from `https://github.com/magento/magento2-sample-data`. If your Magento instance was cloned from the `master` branch, choose the `master` branch when cloning sample data; choose the `develop` branch if Magento was cloned from `develop`.
+2. Link the sample data and your Magento instance by running: `# php -f <sample-data_clone_dir>/dev/tools/build-sample-data.php -- --ce-source="<path_to_your_magento_instance>"`
+
+## Install Sample Data
+Once the sample data is deployed, it will be installed automatically when you install or upgrade your Magento instance either by using the Magento Setup Wizard or from the command line.
+
+## Uninstall Sample Data
+To remove the sample data modules from the code base, run one of the following commands from the Magento root directory:
+
+* If sample data was deployed from the composer repository, run: `# bin/magento sampledata:remove`
+* If sample data was deployed from the GitHub repository and linked to your Magento instance, run:
+`# php -f <sample-data_clone_dir>/dev/tools/build-sample-data.php – --command=unlink --ce-source="<path_to_your_magento_instance>"`
+
+To delete all the products and other entities provided by the sample data modules, delete the database and reinstall Magento with a clean database.
+
+## Reinstall Sample Data
+If you have deleted certain entities provided by sample data and want to restore them, take the following steps:
+
+1. From the Magento root directory, run the following command: `# bin/magento sampledata:reset`
+2. Upgrade Magento as usual.
+
+The deleted sample data entities will be restored. Those entities, which were changed, will preserve these changes and will not be restored to the default view.
+
+## Documentation
+You can find the more detailed description of sample data manipulation procedures at [http://devdocs.magento.com/guides/v2.0/install-gde/install/cli/install-cli-sample-data.html](http://devdocs.magento.com/guides/v2.0/install-gde/install/cli/install-cli-sample-data.html)
+</code>
+
+=== module-search ===
+
+<code>Magento_Search module introduces basic search functionality and provides interfaces that allow to implement search for specific module.
+</code>
+
+=== module-security ===
+
+<code># Security
+
+**Security** management module
+_Main features:_
+1. Added support for simultaneous admin user logins with ability to enable/disable the feature, review and disconnect the list of current logged in sessions
+2. Added password complexity configuration
+3. Enhanced security to prevent account takeover for sessions opened on public computers and similar:
+    * Password confirmation for all critical flows (like password, email change)
+    * Lockout of the account after a configurable amount of incorrect login/password entries
+    * Password Change functionality is enhanced by email and/or ip address by frequency, number and requests per hour limitation
+    * Change password link becomes invalid after the first use or after a configurable amount of time
+    * Password/email change notifications are sent to both old and new email addresses
+4. Fixed: the password is not being reset until the new password is submitted via the form available by a one time link sent to the email address
+</code>
+
+=== module-send-friend ===
+
+<code>The Magento_SendFriend implements the functionality behind the "Email to a Friend" link on a product page, which allows to share favorite products with others by clicking the link.
+</code>
+
+=== module-shipping ===
+
+<code>The Magento_Shipping module provides the abstract models and interfaces for a shipping carrier integration, including the web interface for the Shipment entity.
+You need to extend these abstractions if you are adding new shipping carrier integration.
+</code>
+
+=== module-sitemap ===
+
+<code>The Sitemap module allows managing the Magento application sitemap and
+[sitemap.xml](http://en.wikipedia.org/wiki/Sitemaps) for searching engines.</code>
+
+=== module-store ===
+
+<code>The Store module provides one of the basic and major features of a content management system for e-commerce web
+sites by creating and managing a store for the customers to conduct online-shopping. Stores can be combined in groups,
+and are linked to a specific website. All store related configurations (currency, locale, scope etc.), management and
+storage maintenance are covered under this module.</code>
+
+=== module-swagger ===
+
+<code>The Magento_Swagger module provides access to a page generated using the swagger-ui package. The swagger-ui can be viewed
+[on Github](https://github.com/swagger-api/swagger-ui). It accesses the JSON Schema describing Magento's REST APIs,
+and displays it in a user-friendly, navigable format.
+</code>
+
+=== module-swatches ===
+
+<code>Magento_Swatches module is replacing default product attributes text values with swatch images, for more convenient product displaying and selection.</code>
+
+=== module-swatches-layered-navigation ===
+
+<code># The Magento SwatchesLayeredNavigation Module
+
+## Overview
+
+The **Magento_SwatchesLayeredNavigation** module enables LayeredNavigation functionality for Swatch attributes
+
+## Backward incompatible changes
+No backward incompatible changes
+
+## Dependencies
+The **Magento_SwatchesLayeredNavigation** is dependent on the following modules:
+
+- Magento_Swatches
+- Magento_LayeredNavigation
+
+## Specific Settings
+The **Magento_SwatchesLayeredNavigation** module does not provide any specific settings.
+
+## Specific Extension Points
+The **Magento_SwatchesLayeredNavigation** module does not provide any specific extension points. You can extend it using the Magento extension mechanism.
+</code>
+
+=== module-tax ===
+
+<code># Overview
+## Purpose of module
+The Magento_Tax module provides the calculations needed to compute the consumption tax on goods and services.
+
+The Magento_Tax module includes the following:
+* configuration of the tax rates and rules to apply
+* configuration of tax classes that apply to:
+** taxation on products
+** taxation on shipping charges
+** taxation on gift options (example: gift wrapping)
+* specification whether the consumption tax is "sales & use" (typically product prices are loaded without any tax) or "VAT" (typically product prices are loaded including tax)
+* specification of whether the tax total line can be toggled to display the tax details/subtotals
+* display of prices (presented with tax, without tax, or both with and without)
+
+The Magento_Tax module also handles special cases when computing tax, such as:
+* determining the tax on an individual item (for example, one that is being returned) when the original tax has been computed on the entire shopping cart
+** example country: United States
+* being able to handle 2 or more tax rates that are applied separately (examples include a "luxury tax" on exclusive items)
+* being able to handle a subsequent tax rate that is applied after a previous one is applied (a "tax on tax" situation, which recently was a part of Canadian tax law)
+
+# Deployment
+## System requirements
+The Magento_Tax module does not have any specific system requirements.
+
+Depending on how many tax rates and tax rules are being used, there might be consideration for the database size
+Depending on the frequency of updating tax rates and tax rules, there might be consideration for the scheduling of these updates
+
+## Install
+The Magento_Tax module is installed automatically (using the native Magento install mechanism) without any additional actions.
+
+## Uninstall
+The Magento_Tax module should not be uninstalled; it is a required module.</code>
+
+=== module-theme ===
+
+<code>The Theme module contains common infrastructure that provides an ability to apply and use themes in Magento application.</code>
+
+=== module-translation ===
+
+<code># Translation
+
+**Translation** enables localization of a store for multiple regions and markets.
+Also provides the inline translation tool.
+</code>
+
+=== module-ui ===
+
+<code># Overview
+## Purpose of module
+
+The Magento\Ui module introduces a set of common UI components, which could be easily used and configured via layout XML files.
+
+# Deployment
+## System requirements
+
+The Magento\Ui module does not have any specific system requirements.
+
+## Install
+The Magento\Ui module is installed automatically (using the native Magento Setup). No additional actions required.
+</code>
+
+=== module-ups ===
+
+<code>The Magento_Ups module implements integration with the United Parcel Service shipping carrier.
+</code>
+
+=== module-url-rewrite ===
+
+<code>Magento_UrlRewrite module provides ability to customize website URLs by creating custom URL rewrite rules.
+</code>
+
+=== module-user ===
+
+<code># User
+
+**User** enables admin users to manage and assign roles to administrators and other non-customer users,
+reset user passwords, and invalidate access tokens.
+Different roles can be assigned to different users to define their permissions.
+For admin passwords, it enables setting lifetimes and locking them when expired or when a specified numbers of failures have occurred. It allows preventing password brute force attacks for system backend.
+</code>
+
+=== module-usps ===
+
+<code>The Magento_Usps module provides integration with the United States Postal Service shipping carrier.
+</code>
+
+=== module-variable ===
+
+<code>Magento\Variable Allows to create custom variables and then use them in email templates or in WYSIWYG editor for editing description of system entities.
+</code>
+
+=== module-vault ===
+
+<code>The Magento_Vault module implements the integration with the Vault payment gateway and makes the latter available as a payment method in Magento.
+</code>
+
+=== module-version ===
+
+<code>Magento\Version Allows to get Magento version and edition by HTTP GET request
+</code>
+
+=== module-webapi ===
+
+<code># Webapi
+
+**Webapi** provides the framework for the application to expose REST and SOAP web services. It exposes an area for REST
+and another area for SOAP services and routes requests based on the Webapi configuration. It also handles
+deserialization of requests and serialization of responses. 
+</code>
+
+=== module-webapi-security ===
+
+<code># WebapiSecurity
+
+**WebapiSecurity** enables access management of some Web API resources.
+If checkbox is enabled in backend through: Stores -> Configuration -> Services -> Magento Web API -> Web Api Security
+then the security of all of the services outlined in app/code/Magento/WebapiSecurity/etc/di.xml would be loosened. You may modify this list to customize which services should follow this behavior.
+By loosening the security, these services would allow access anonymously (by anyone).
+</code>
+
+=== module-weee ===
+
+<code># Overview
+The Magento_Weee module enables the application of fees/fixed product taxes (FPT) on certain types of products, usually related to electronic devices and recycling.
+Fixed product taxes can be used to setup a WEEE tax that is a fixed amount, rather than a percentage of the product price. FPT can be configured to be displayed at various places in Magento. Rules, amounts, and display options can be configured in the backend. This module extends the existing functionality of Magento_Tax.
+
+The Magento_Wee module includes the following:
+
+* ability to add different number of fixed product taxes to product. They are treated as a product attribute;
+* configuration of where Weee appears (on category, product, sales, invoice, or credit memo pages) and whether FPT should be taxed;
+* a new line item in the totals section.
+
+# System requirements
+The Magento_Weee module does not have any specific system requirements.
+
+## Install
+Magento_Weee module can be installed automatically (using native Magento install mechanism) without any additional actions
+
+## Uninstall
+Magento installation with existing products with FPT:
+* Disable FPT on the backend
+* Remove all products with FPT
+* Remove all FPT attributes from attribute sets
+* Delete all FPT attributes
+* Remove module directory from the code base
+* New Magento installation:
+* Can be removed without additional actions</code>
+
+=== module-widget ===
+
+<code>The Widget module allows Magento application to be extended with custom widget blocks.</code>
+
+=== module-wishlist ===
+
+<code>The Magento_Wishlist implements the Wishlist functionality.
+This allows customers to create a list of products that they can add to their shopping cart to be purchased at a later date, or share with friends.
+</code>
+
+[[|Top]]
+
