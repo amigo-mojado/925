@@ -1,0 +1,227 @@
+* Rebuilt URL to: http:www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://http:www.google.de/ HTTP/1.1
+Host: http
+Accept: */*
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.8) Gecko/20061025 Firefox/1.5.0.8
+
+< HTTP/1.1 400 Bad Request
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:32:53 GMT
+< Content-Type: text/html
+< Content-Length: 3240
+< X-Squid-Error: ERR_INVALID_URL 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: NONE from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: close
+< 
+* Curl_http_done: called premature == 0
+* Closing connection 0
+* Rebuilt URL to: http:www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://http:www.google.de/ HTTP/1.1
+Host: http
+Accept: */*
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.8) Gecko/20061025 Firefox/1.5.0.8
+
+< HTTP/1.1 400 Bad Request
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:33:28 GMT
+< Content-Type: text/html
+< Content-Length: 3240
+< X-Squid-Error: ERR_INVALID_URL 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: NONE from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: close
+< 
+* Curl_http_done: called premature == 0
+* Closing connection 0
+* Rebuilt URL to: https:www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://https:www.google.de/ HTTP/1.1
+Host: https
+Accept: */*
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.8) Gecko/20061025 Firefox/1.5.0.8
+
+< HTTP/1.1 400 Bad Request
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:34:31 GMT
+< Content-Type: text/html
+< Content-Length: 3242
+< X-Squid-Error: ERR_INVALID_URL 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: NONE from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: close
+< 
+* Curl_http_done: called premature == 0
+* Closing connection 0
+* Rebuilt URL to: https://www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to https-proxy (172.31.64.28) port 3128 (#0)
+* Establish HTTP proxy tunnel to www.google.de:443
+> CONNECT www.google.de:443 HTTP/1.1
+Host: www.google.de:443
+Proxy-Connection: Keep-Alive
+
+< HTTP/1.1 200 Connection established
+< 
+* Proxy replied OK to CONNECT request
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* SSL certificate problem: unable to get local issuer certificate
+* Curl_http_done: called premature == 1
+* Closing connection 0
+* Rebuilt URL to: www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to https-proxy (172.31.64.28) port 3128 (#0)
+> GET http://www.google.de/ HTTP/1.1
+Host: www.google.de
+Accept: */*
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.8) Gecko/20061025 Firefox/1.5.0.8
+
+< HTTP/1.1 403 Forbidden
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:35:21 GMT
+< Content-Type: text/html
+< Content-Length: 58
+< X-Squid-Error: ERR_ACCESS_DENIED_BROWSER 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: NONE from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: keep-alive
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host https-proxy left intact
+* Rebuilt URL to: www.google.de/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to https-proxy (172.31.64.28) port 3128 (#0)
+> GET http://www.google.de/ HTTP/1.1
+Host: www.google.de
+Accept: */*
+Proxy-Connection: Keep-Alive
+
+< HTTP/1.1 200 OK
+< Date: Wed, 15 Mar 2017 11:36:09 GMT
+< Expires: -1
+< Cache-Control: private, max-age=0
+< Content-Type: text/html; charset=ISO-8859-1
+< P3P: CP="This is not a P3P policy! See https://www.google.com/support/accounts/answer/151657?hl=en for more info."
+< Server: gws
+< X-XSS-Protection: 1; mode=block
+< X-Frame-Options: SAMEORIGIN
+< Set-Cookie: NID=99=jp5x6PxzhqbHRiCK9veekmEFhnb0IhrpSNJ05HtptvQZ_2CFMtsSbpNpjb9dIaFspQIQgYknnq-Ov5QLALNxKJ1IALBPLDLiX5CebrOvQi4UCkpLTr_sYOlO0Olg8zRm; expires=Thu, 14-Sep-2017 11:36:09 GMT; path=/; domain=.google.de; HttpOnly
+< Accept-Ranges: none
+< Vary: Accept-Encoding
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: MISS from fw-intern-s1-nsd:3128
+< Transfer-Encoding: chunked
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: keep-alive
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host https-proxy left intact
+* Rebuilt URL to: spielwiese.local/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to https-proxy (172.31.64.28) port 3128 (#0)
+> GET http://spielwiese.local/ HTTP/1.1
+Host: spielwiese.local
+Accept: */*
+Proxy-Connection: Keep-Alive
+
+< HTTP/1.1 503 Service Unavailable
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:36:40 GMT
+< Content-Type: text/html
+< Content-Length: 3396
+< X-Squid-Error: ERR_DNS_FAIL 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: MISS from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: keep-alive
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host https-proxy left intact
+* Rebuilt URL to: http://spielwiese.local/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://spielwiese.local/ HTTP/1.1
+Host: spielwiese.local
+Accept: */*
+Proxy-Connection: Keep-Alive
+
+< HTTP/1.1 503 Service Unavailable
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:37:20 GMT
+< Content-Type: text/html
+< Content-Length: 3396
+< X-Squid-Error: ERR_DNS_FAIL 0
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: MISS from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: keep-alive
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host http-proxy left intact
+* Rebuilt URL to: 192.168.56.222/
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://192.168.56.222/ HTTP/1.1
+Host: 192.168.56.222
+Accept: */*
+Proxy-Connection: Keep-Alive
+
+< HTTP/1.1 503 Service Unavailable
+< Server: squid/3.4.4
+< Mime-Version: 1.0
+< Date: Wed, 15 Mar 2017 11:39:01 GMT
+< Content-Type: text/html
+< Content-Length: 3255
+< X-Squid-Error: ERR_CONNECT_FAIL 110
+< X-Cache: MISS from fw-intern-s1-nsd
+< X-Cache-Lookup: MISS from fw-intern-s1-nsd:3128
+< Via: 1.1 fw-intern-s1-nsd (squid/3.4.4)
+< Connection: keep-alive
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host http-proxy left intact
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://192.168.56.222/rest HTTP/1.1
+Host: 192.168.56.222
+Accept: */*
+Proxy-Connection: Keep-Alive
+
+*   Trying 172.31.64.28...
+* TCP_NODELAY set
+* Connected to http-proxy (172.31.64.28) port 3128 (#0)
+> GET http://192.168.56.222/rest/ HTTP/1.1
+Host: 192.168.56.222
+Accept: */*
+Proxy-Connection: Keep-Alive
+
