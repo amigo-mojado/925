@@ -1,0 +1,269 @@
+<html>
+<title>Magento REST client</title>
+</html>
+
+<body>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+
+    /**
+     * Client for the Magento API
+     */
+    MagentoRestClient = function(entryPoint, apiLogin, apiKey, method, timeout)
+    {
+        var self = this;
+
+        self.entryPoint = entryPoint;
+        self.apiLogin = apiLogin;
+        self.apiKey = apiKey;
+        self.method = method;
+        self.timeout = timeout;
+
+        /**
+         * @param string   method    the remote procedure to call
+         * @param object   params    parameters for the RPC
+         * @param callback onSuccess callback for successful request. Expects one parameter (decoded response object)
+         * @param callback onError   callback for failed request. Expects one parameter (error message)
+         *
+         * @return void
+         */
+        self.jsonRpc = function(method, params, onSuccess, onError) {
+            var request = {
+                method : method,
+                params : params,
+                jsonrpc : "2.0",
+                id : 1
+            };
+
+            var httpClient = new XMLHttpRequest;
+            httpClient.onload = function(e) {
+                try {
+                    var response = JSON.parse(this.responseText);
+                } catch (jsonError) {
+                    return onError(jsonError);
+                }
+                if (response.error) {
+                    if (response.error.code == 5) { // session expired
+                        self.sessionId = null;
+                    }
+                    return onError(response.error.message);
+                }
+                onSuccess(response);
+            };
+            httpClient.onerror = function(e) {
+                onError(e.error + '; Response:' + this.responseText);
+            };
+            httpClient.ontimeout = function(e) {
+                onError(e.error + '; Response:' + this.responseText);
+            };
+
+            httpClient.open(self.method, self.entryPoint);
+            httpClient.setRequestHeader("Content-type", "application/json");
+            httpClient.send(JSON.stringify(request));
+        }
+        /**
+         * Retrieve session id for API
+         *
+         * @return JQuery.Deferred deferred object for asynchronous chaining
+         */
+        self.login = function() {
+            var deferred = new jQuery.Deferred();
+            if (self.sessionId) {
+                deferred.resolve();
+                return deferred;
+            }
+            try {
+                self.jsonRpc('login', [self.apiLogin, self.apiKey], function(response) {
+                    if (response && response.result) {
+                        self.sessionId = response.result;
+                        deferred.resolve();
+                    } else {
+                        deferred.reject('Login failed.');
+                    }
+                }, function(error) {
+                    deferred.reject(error);
+                });
+            } catch (rpcError) {
+                deferred.reject(rpcError);
+            }
+            return deferred;
+        };
+        /**
+         * Updates order states in Magento
+         *
+         * @param string method   name of the remote method
+         * @param object args     arguments for the remote method
+         *
+         * @return JQuery.Deferred deferred object for asynchronous chaining
+         */
+        self.call = function(method, args) {
+            var deferred = new jQuery.Deferred();
+            if (!self.sessionId) {
+                deferred.reject('No session.');
+                return;
+            }
+            var callParams = {
+                sessionId : self.sessionId,
+                apiPath   : method,
+                args      : args
+            };
+            try {
+                self.jsonRpc('call', callParams, function(response) {
+                    deferred.resolve(response.result);
+                }, function(error) {
+                    deferred.reject(error);
+                });
+            } catch (rpcError) {
+                deferred.reject(rpcError);
+            }
+
+            return deferred;
+        };
+    };
+
+</script>
+
+<script>
+    var cartId = localStorage.getItem('cartId');
+    var magento = new MagentoRestClient('http://192.168.56.222/api/rest/', 'rest', 'magento-123', 'POST', 60);
+
+    // API Login
+    magento.login().then(function() {
+
+        // API Load Products
+        magento.call('catalog_product.list', []).then(
+                function(jsonResponse) {
+                    displayProducts(jsonResponse);
+                }, function(error) {
+                    console.log('Magento API error: ' + error);
+                }
+        );
+
+        // API Create Cart and save it's ID
+        if(!cartId) {
+            magento.call('cart.create', []).then(
+                    function (jsonResponse) {
+                        localStorage.setItem('cartId', jsonResponse);
+                        loadCart();
+                    }, function (error) {
+                        console.log('Magento API error: ' + error);
+                    }
+            );
+        } else {
+            loadCart();
+        }
+    });
+
+    // Load Cart Info and Items
+    function loadCart() {
+        jQuery('#cartLoader').show();
+        jQuery('#cartInfo').html('');
+        jQuery('#cartItems').html('');
+
+        // API Load Cart Info
+        magento.call('cart.info', [cartId]).then(
+                function (jsonResponse) {
+                    displayCartInfo(jsonResponse);
+                }, function (error) {
+                    console.log('Magento API error: ' + error);
+                }
+        );
+
+        // API Load Cart Items
+        magento.call('cart_product.list', [cartId]).then(
+                function (jsonResponse) {
+                    displayCartItems(jsonResponse);
+                }, function (error) {
+                    console.log('Magento API error: ' + error);
+                }
+        );
+    }
+
+    function addToCart(sku) {
+        // Add To Cart
+        magento.login().then(function () {
+            var data = [{sku: sku, quantity: 1}];
+            magento.call('cart_product.add', [cartId, data]).then(
+                    function (jsonResponse) {
+                        loadCart();
+                    }, function (error) {
+                        console.log('Magento API error: ' + error);
+                    }
+            );
+        });
+    }
+</script>
+
+<script>
+
+    function displayProducts(aProducts) {
+        jQuery('#productsLoader').hide();
+
+        jQuery(aProducts).each(function(i){
+            var item = aProducts[i];
+            var html = jQuery('#template-product').html();
+            html = html.replace(/{{name}}/g, item.name);
+            html = html.replace(/{{sku}}/g, item.sku);
+
+            jQuery('#products').append(html);
+        });
+    }
+
+    function displayCartInfo(oCart) {
+        jQuery('#cartLoader').hide();
+
+        var html = jQuery('#template-cart-info').html();
+        html = html.replace(/{{items_qty}}/g, oCart.items_qty);
+
+        jQuery('#cartInfo').html(html);
+    }
+
+    function displayCartItems(aProducts) {
+        jQuery(aProducts).each(function(i){
+            var item = aProducts[i];
+            var html = jQuery('#template-cart-item').html();
+            html = html.replace(/{{name}}/g, item.name);
+
+            jQuery('#cartItems').append(html);
+        });
+    }
+
+</script>
+
+<div style="display: none;" id="templates">
+
+    <div id="template-product">
+        <li>{{name}} <a href="#" onclick="addToCart('{{sku}}');">Add To Cart</a></li>
+    </div>
+
+    <div id="template-cart-info">
+        Products: {{items_qty}}
+    </div>
+
+    <div id="template-cart-item">
+        <li>{{name}} <a class="removeFromCart" href="#">Remove from Cart</a></li>
+    </div>
+
+</div>
+
+
+<h1>Magento REST Client</h1>
+
+<div style="width: 100%;">
+    <div style="width: 50%; background-color: #00ACEE; float: left;">
+        <h2>Products</h2>
+
+        <span id="productsLoader">Loading products...</span>
+        <ul id="products"></li>
+    </div>
+    <div style="width: 50%; background-color: #008844; float: right;">
+        <h2>Cart <a href="#" onclick="loadCart();">Reload</a></h2>
+
+        <span id="cartLoader">Loading cart...</span>
+        <div id="cartInfo"></div>
+        <ul id="cartItems"></ul>
+    </div>
+</div>
+
+</body>
