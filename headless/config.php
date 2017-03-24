@@ -1,8 +1,12 @@
 <?php
-$errors = array();
+$messages = array();
+$messages['errors'] = array();
+$messages['success'] = array();
 $view = array();
 $view['sidebar'] = array();
 $view['content'] = array();
+$view['nav'] = array();
+$view['nav']['cms'] = array();
 
 $config = array();
 $config['host'] = 'http://192.168.56.222/index.php/rest';

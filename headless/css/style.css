@@ -56,3 +56,18 @@ table tr td{
 nav{
     padding-top: 28px;
 }
+
+.error{
+    color: red;
+    margin-bottom: 20px;
+}
+
+.success{
+    color: green;
+    margin-bottom: 20px;
+}
+
+table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

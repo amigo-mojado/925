@@ -18,10 +18,20 @@
 <body>
 <div id="wrapper">
     <header>
-        <nav></nav>
+        <nav>
+            <a href="/headless-magento/">home</a> | <a href="/headless-magento/?cart=true">cart</a> | <a href="/headless-magento/?cms=true">cms</a>
+            | CMS:
+            <?php
+                foreach($view['nav']['cms'] as $page){
+                    echo $page;
+                }
+            ?>
+
+        </nav>
     </header>
     <div id="content">&nbsp;
-        <?php foreach($errors as $error){echo "<div class=\"error\">".$error."</div>\n";} ?>
+        <?php foreach($messages['errors'] as $message){echo "<div class=\"error\">".$message."</div>\n";} ?>
+        <?php foreach($messages['success'] as $message){echo "<div class=\"success\">".$message."</div>\n";} ?>
         <?php foreach($view['content'] as $html){echo $html;} ?>
     </div>
     <div id="rightcol"><?php foreach($view['sidebar'] as $html){echo $html;} ?></div>

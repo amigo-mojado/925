@@ -18,7 +18,9 @@
 <body>
 <div id="wrapper">
     <header>
-        <nav></nav>
+        <nav>
+            <a href="/headless-magento/">home</a> | <a href="/headless-magento/?cart=true">cart</a>
+        </nav>
     </header>
     <div id="content">
         <?php
