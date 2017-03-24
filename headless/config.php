@@ -15,3 +15,8 @@ $config['admin_password'] = 'magento-123';
 $config['customer_user'] = 'roni_cost@example.com';
 $config['customer_password'] = 'roni_cost3@example.com';
 $info = array();
+
+$cache = array(
+    'http://192.168.56.222/headless-magento/',
+    'http://192.168.56.222/headless-magento/?cart=true'
+);

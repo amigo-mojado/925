@@ -1,12 +1,15 @@
 <?php
 session_start();
+
 include('config.php');
 include('auth.php');
 include('categories.php');
 include('products.php');
-include('cart.php');
+if($_GET['cart'] || $_GET['addToCart']){
+    include('cart.php');
+}
 include('checkout.php');
-include('cms.php');
+//include('cms.php');
 include('template.php');
 
 function getData($host,$token,$encode = true){
@@ -72,3 +75,4 @@ function _dt($var){
     print_r($var);
     echo "</textarea>\n";
 }
+
