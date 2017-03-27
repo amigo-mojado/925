@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>jQuery Beispiel: einbinden und erster Befehl</title>
+    <script src="jquery.js"></script>
+    <script>
+
+
+        $(document).ready(function(){
+            if (localStorage.getItem("cart") === null){
+                addData('http://192.168.56.222/index.php/rest/V1/guest-carts/','cart','');
+            }
+            else{
+                $('#cart_id').text(localStorage.cart);
+            }
+
+            if (localStorage.getItem("customer_token") === null){
+                addData('http://192.168.56.222/index.php/rest/V1/integration/customer/token','customer_token','{"username":"roni_cost@example.com","password":"roni_cost3@example.com"}');
+            }
+            else{
+                $('#customer_token').text(localStorage.customer_token);
+            }
+
+            if (localStorage.getItem("categories") === null){
+                $('#customer_token').text(localStorage.customer_token);
+            }
+            else{
+                $('#categories').text(localStorage.categories);
+            }
+
+            //addData('http://192.168.56.222/index.php/rest/V1/guest-carts/','');
+            function addData(url,cachekey,data){// pass your data in method
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    //data: JSON.stringify(data),// now data come in this function
+                    data: data,// now data come in this function
+                    contentType: "application/json; charset=utf-8",
+                    crossDomain: true,
+                    dataType: "json",
+                    success: function (data, status, jqXHR) {
+                        alert("success");// write success in " "
+                        localStorage.setItem(cachekey, data);
+                    },
+
+                    error: function (jqXHR, status) {
+                        // error handler
+                        console.log(jqXHR);
+                        alert('fail' + status.code);
+                    }
+                });
+            }
+
+            function getData(url,cachekey){// pass your data in method
+                alert(localStorage.admin_token);
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    //beforeSend: function (xhr) {
+                    //    xhr.setRequestHeader('Authorization', 'Bearer 62u1qdsfn3xgx19o237d8xivukqlgpih');
+                    //},
+                    data: {},
+                    success: function (data) {
+                        localStorage.setItem(cachekey, JSON.stringify(data));
+                    },
+                    error: function (jqXHR, status) {
+                        // error handler
+                        console.log(jqXHR);
+                        alert('fail' + status.code);
+                    }
+                });
+            }
+var json = jQuery.parseJSON(localStorage.categories);
+
+            var recursiveObjMap = (function(){
+                var stack = [];
+                var result = [];
+                // var bail = false;
+                return function map(data, key){
+                    if (!$.isArray(data) && !$.isPlainObject(data) ) {
+                        result.push(data);
+                        return false
+                    }
+
+                    $.each(data, function(i, v){
+                        if (key) stack.push(key);
+                        map(v, i);
+                        stack.pop();
+                    });
+                    return result;
+                };
+            })();
+
+            //var nav = recursiveObjMap(json);
+            //alert(nav);
+            var nav = [];
+            $('#categories').html(recursiveIteration(json,nav));
+            function recursiveIteration(object,nav) {
+                for (var property in object) {
+                    if (object.hasOwnProperty(property)) {
+                        if (typeof object[property] == "object"){
+                            if(object['name'] !== undefined ){
+                                nav.push('<a href="">'+object['name']+'</a><br>');
+
+                            }
+                            recursiveIteration(object[property],nav);
+
+                        }else{
+                            //found a property which is not an object, check for your conditions here
+                            console.log(property);
+                            console.log(object[property]);
+                        }
+                    }
+                }
+                return nav;
+            }
+        });
+    </script>
+</head>
+<body>
+cart_id: <div id="cart_id"></div>
+customer_token: <div id="customer_token"></div>
+categories: <div id="categories"></div>
+</body>
+</html>
